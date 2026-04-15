@@ -1,0 +1,1 @@
+There is a document called Prompt in the AutomataForAGT folder. Can you please write code for the 1st page of what's in the Prompt document. I understand that this is just definitions. After you have done this, can you print examples satifying the definitions?
