@@ -1,1 +1,10 @@
-There is a document called Prompt in the AutomataForAGT folder. Can you please write code for the 1st page of what's in the Prompt document. I understand that this is just definitions. After you have done this, can you print examples satifying the definitions?
+There is a document called Prompt in the AutomataForAGT folder. 
+Can you please write code for the 1st page of what's in the Prompt document. I understand that this is just definitions. After you have done this, can you print examples satifying the definitions?
+
+Box XIV, should at least have another graph with a b and d swapped, 
+based on where the arrows are coming from and 
+then presumable an arrow going back.
+
+Overall, our permutation circumstances need to be different.
+Related to this is their missing some of the cycles 
+(changing the strongly connected components)

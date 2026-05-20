@@ -1,0 +1,468 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,fit,calc}
+\usepackage{hyperref}
+\newtheorem{thm}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{dfn}[thm]{Definition}
+\newtheorem{rk}[thm]{Remark}
+\newtheorem{task}[thm]{Task}
+\newtheorem{conv}[thm]{Convention}
+
+\title{Instructions to create automata (written both for a human \& AI)}
+\author{Catherine Eva Pfaff}
+\date{}
+
+\begin{document}
+\maketitle
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+\newpage
+
+Our aim is to construct an automaton, by which we will mean a directed labeled graph. Because the labels on the vertices of the automaton are themselves graphs, to reduce confusion, we will always call the vertices of the automaton ``nodes'' and reserve this terminology for the vertices of the automaton.
+
+\emph{For us, a graph will always be allowed to have single-edge loops and multi-edges. Sometimes it will be directed, and sometimes it will have labels on the vertices and edges.} 
+
+\section*{Admissible ltt structures}
+\phantomsection
+\addcontentsline{toc}{section}{Admissible ltt structures}
+
+\noindent\emph{The first goal is to write code to list all admissible ltt structures}
+(these will give potential nodes of the automaton). The following definitions build up to defining an admissible ltt structure.
+
+We are interested in a specific kind of colored graph that will have single-edge loops and multi-edges. We provide here this definition and henceforth refer to it as a structure graph:
+
+\begin{dfn}[structure graph]\label{d:graph}
+By a \emph{structure graph} we mean a graph in which each of (1)--(4) holds:
+\begin{enumerate}[label=\arabic*)]
+  \item There is exactly one red vertex; all other vertices are purple.
+  \item There is exactly one red edge; all other edges are either black or purple.
+        Edges colored red or purple are called \emph{colored edges}.
+  \item Multi-edges are allowed, but for each pair of vertices there is at most one
+        colored edge connecting that pair.
+  \item Single-edge loops are allowed, but only black edges can be loops.
+\end{enumerate}
+\end{dfn}
+
+In practice, a structure graph will have an ``underlying graph'' with 5-edge that a colored graph, as in Definition \ref{d:graph} is obtained from as a ``blow up.'' The edges of the underlying graph become 5 black edges and we label these black edges by $x_1, \dots, x_5$. We further assigned an orientation to the 5 black edges, labeling the initial vertex of the black edge $x_j$ by $x_j$ and the terminal vertex of $x_j$ by $\bar{x_j}$. A bar over an edge name then also indicates a reversal of orientation. With this in mind, the following notation is used to discuss the black edges and vertices:
+
+\begin{dfn}[notation]
+For simplicity, we establish notation for this list of vertex labels: 
+
+Define
+\[
+\mathcal{L}=\{x_1,\bar{x}_1,\ldots,x_5,\bar{x}_5\}.
+\]
+And we notationally encode that reversing the orientation of an edge twice returns the original edge:
+\[
+\bar{\bar{x}}_j=x_j.
+\]
+Finally, in order to make choices about the order in which we perform certain computations, we will need an order on the set of vertex labels $\mathcal{L}$:
+
+Assume
+\[
+x_1<\bar{x}_1<\cdots<x_5<\bar{x}_5
+\]
+is the increasing order on $\mathcal{L}$.
+\end{dfn}
+
+\begin{dfn}[distinguished admissible ltt structure]
+A \emph{distinguished admissible ltt structure} is a connected structure graph $G$ with:
+\begin{itemize}
+  \item 5 pairs of vertices labeled precisely by the elements of $\mathcal{L}$ (duplicate labels are not allowed);
+  \item $x_1$ is red and all remaining vertices are purple;
+  \item $x_1$ is connected by a red edge to $x_2$;
+  \item $\{\bar{x}_1,x_2,\bar{x}_2,\ldots,x_5,\bar{x}_5\}$ is partitioned into
+        three sets of size $3$, and vertices in each partition element are pairwise connected by purple edges;
+  \item each pair $\{x_j,\bar{x}_j\}$ is connected by a black edge (this black edge can be viewed as an oriented edge from $\{x_j$ to $\bar{x}_j\}$, and then $\bar{x}_j\}$ would notate this edge with a reverse orientation).
+\end{itemize}
+\end{dfn}
+
+
+\begin{dfn}[ep-isomorphic, admissible ltt structure]
+Two colored graphs $G_1,G_2$ with vertices labeled by $\mathcal{L}$ are
+\emph{ep-isomorphic} via bijection $\varphi$ iff there is a bijection $\varphi:\mathcal{L}\to\mathcal{L}$ such that:
+\begin{enumerate}[label=(\roman*)]
+  \item for each $x\in\mathcal{L}$, the vertices labeled $x$ and $\varphi(x)$ have
+        the same color;
+  \item for each distinct pair of elements $x,y\in\mathcal{L}$, the vertices labeled
+        $\varphi(x),\varphi(y)$ are connected by an edge of color $C$ iff the vertices
+        labeled $x,y$ are connected by an edge of color $C$ (black here is considered to be a color).
+\end{enumerate}
+An \emph{admissible ltt structure} is any graph ep-isomorphic to a distinguished
+admissible ltt structure. The red vertex $\varphi(x_1)$ will sometimes be denoted by $v_r$, the other red edge vertex $\varphi(x_2)$ will sometimes be denoted by $v_p$, and the red edge oriented $(v_r,v_p)$ will sometimes be denoted by $e_r$. The set of purple edges may be denoted by $\mathcal{P}$. 
+
+Place some (any) order on the set of admissible ltt structures. Let $\mathrm{PLTT}$ denote the set of admissible ltt structures endowed with this order.
+\end{dfn}
+
+
+Note that the partition of $\{\bar{x}_1,x_2,\bar{x}_2,\ldots,x_5,\bar{x}_5\}$ induces a partition of the set of purple edges. Recall that there is an ordering on $\mathcal{L}$ - we will use this to order the partition elements. In the partition of both $\mathcal{L}$ and $\mathcal{P}$, we order the partition elements in the increasing order of their minimal element. That is,  we denote the partition elements by $L_1, L_2, L_3$, where $i<j$ when there is an $\ell\in L_i$ such that $\ell<\ell'$ for each $\ell'\in L_j$. The indices of the partition $\mathcal{P}=\{P_1, P_2, P_3\}$ is consistent. That is, the partition elements are ordered by their lowest vertex labels. 
+
+Recall that an admissible ltt structure $G$ has an underlying graph, we denote $\Gamma_G$. In practice, this underlying graph can be obtained by collapsing each colored edge to a point. As such, there is a bijection between the vertex set of $\Gamma_G$ and the partition of $\mathcal{P}$ (and equivalently of $\mathcal{L}$). Denote by $v_j$ the vertex associated to the partition element $P_j$.
+
+\begin{conv}\label{c:ltt_structures}
+An admissible ltt structure will be described in the following format:\\
+\indent $e_r$: $(v_r,v_p)$
+\indent $v_1$: $P_1$
+\indent $v_2$: $P_2$
+\indent $v_3$: $P_3$
+\end{conv}
+
+\begin{task}\label{t:ltt_structure_list}
+Write code to list all admissible ltt structures. Print out a representative of each ep-isomorphism class.
+\end{task}
+
+Output in the appendix.
+
+\begin{task}\label{t:ltt_structure_depictions}
+Create a visual depiction of the admissible ltt structures constructed in Task \ref{t:ltt_structure_list}.
+\end{task}
+
+Output in the appendix.
+
+\medskip
+
+
+\section{Algorithm for constructing automata}
+
+Before constructing the final automaton, we will need to construct a directed labeled graph that we will call preAUT. The nodes of preAUT will be certain elements of PLTT (the set of all nodes will be notated $GRAPHS$ and the directed edges connecting them will have labels that are also determined by the following algorithm. After constructing preAUT, we will take the disjoint union of the maximal strongly connected components, which will give us the automaton (directed labeled graph) AUT. AUT will be the final output of the program that we are constructing.
+
+\subsection{Base Step}
+
+\indent For us the \emph{seed ltt structure} will be that given by:\\
+\indent $e_r$:~ $(x_1,\bar{x}_5)$\\
+\indent $v_1$:~ $\{\bar{x}_1,~ \bar{x}_2\}$, $\{\bar{x}_2,~ x_3\}$, $\{\bar{x}_1,~ x_3\}$\\
+\indent $v_2$:~  $\{x_2,~ x_4\}$, $\{x_4,~ x_5\}$, $\{x_2,~ x_5\}$\\
+\indent $v_3$:~  $\{\bar{x}_3,~ \bar{x}_4\}$, $\{\bar{x}_4,~ \bar{x}_5\}$, $\{\bar{x}_3,~ \bar{x}_5\}$
+
+\begin{task}\label{t:seed_ltt_depiction}
+Create a visual depiction of the seed ltt structure.
+\end{task}
+
+\begin{task}\label{t:seed_ltt_underlying_graph}
+Create a visual depiction of the underlying graph of the seed ltt structure.
+\end{task}
+
+\begin{center}
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[
+  lbl/.style={font=\small, inner sep=1pt},
+  redv/.style={circle, draw=red!70!black, line width=0.8pt, fill=red!45, minimum size=7mm},
+  purpv/.style={circle, draw=violet!80!black, line width=0.8pt, fill=blue!12!purple!28, minimum size=7mm},
+  purpleedge/.style={draw=violet, line width=2.8pt, line cap=round, line join=round},
+  blackedge/.style={draw=black, line width=2.4pt, line cap=round},
+  rededge/.style={draw=red!92!black, line width=3.2pt, line cap=round}
+]
+
+% Three clumps: $L_1$ (left), $L_2$ (top), $L_3$ (right) with $x_1$ beside $L_3$.
+% Black (curved) drawn first; then nine straight purple edges and red on top.
+
+% --- $L_1 = \{\bar{x}_1,\bar{x}_2,x_3\}$ ---
+\node[purpv] (xb1) at (-5.55, 1.55) {$\bar{x}_1$};
+\node[purpv] (xb2) at (-6.7, -1.35) {$\bar{x}_2$};
+\node[purpv] (x3)  at (-4.4, -1.35) {$x_3$};
+
+% --- $L_2 = \{x_2,x_4,x_5\}$ ---
+\node[purpv] (x2) at (-0.15, 5.45) {$x_2$};
+\node[purpv] (x4) at (2.65, 5.95) {$x_4$};
+\node[purpv] (x5) at (5.35, 4.85) {$x_5$};
+
+% --- $L_3 = \{\bar{x}_3,\bar{x}_4,\bar{x}_5\}$ and red vertex adjacent to $\bar{x}_5$ ---
+\node[purpv] (xb3) at (5.45, -2.35) {$\bar{x}_3$};
+\node[purpv] (xb4) at (9.35, -2.35) {$\bar{x}_4$};
+\node[purpv] (xb5) at (7.55, 1.45) {$\bar{x}_5$};
+\node[redv] (x1) at (5.85, 1.45) {$x_1$};
+
+% --- black pair edges (disjoint corridors so arcs do not cross each other) ---
+\draw[blackedge] (x1) -- (xb1);
+\draw[blackedge] (x3) .. controls (-5.6,-9.2) and (5.6,-9.2) .. (xb3);
+\draw[blackedge] (x2) .. controls (-5.5,8.8) and (-10.5,1.5) .. (xb2);
+\draw[blackedge] (x4) .. controls (16.2,7.2) and (16.2,-9.8) .. (xb4);
+\draw[blackedge] (x5) .. controls (8.8,6.8) and (9.6,-0.65) .. (xb5);
+
+% --- purple: every edge of each $K_3$ (nine straight segments) ---
+\draw[purpleedge] (xb1) -- (xb2);
+\draw[purpleedge] (xb1) -- (x3);
+\draw[purpleedge] (xb2) -- (x3);
+\draw[purpleedge] (x2) -- (x4);
+\draw[purpleedge] (x2) -- (x5);
+\draw[purpleedge] (x4) -- (x5);
+\draw[purpleedge] (xb3) -- (xb4);
+\draw[purpleedge] (xb3) -- (xb5);
+\draw[purpleedge] (xb4) -- (xb5);
+
+\draw[rededge] (x1) -- (xb5);
+
+% --- cluster labels ---
+\node[lbl] at (-5.55, -0.38) {$L_1$};
+\node[lbl] at (2.55, 6.65) {$L_2$};
+\node[lbl] at (7.55, -3.35) {$L_3$};
+
+% --- legend ---
+\begin{scope}[shift={(-2.15,-5.1)}, anchor=west]
+  \draw[purpleedge] (0,0) -- (6mm,0); \node[lbl, anchor=west] at (8mm,0) {purple edges (each $L_i$ is a $K_3$)};
+  \draw[blackedge] (0,-5mm) .. controls +(3mm,-4mm) and +(-3mm,-4mm) .. (6mm,-5mm);
+  \node[lbl, anchor=west] at (8mm,-5mm) {black edges ($\{x_j,\bar{x}_j\}$), may be curved};
+  \draw[rededge] (0,-10mm) -- (6mm,-10mm);
+  \node[lbl, anchor=west] at (8mm,-10mm) {red edge $e_r=(x_1,\bar{x}_5)$};
+\end{scope}
+
+\end{tikzpicture}%
+}
+\end{center}
+
+\noindent Vertices follow Convention~\ref{c:ltt_structures}: $x_1$ is the unique red vertex; $\bar{x}_5$ is the purple endpoint of $e_r$; each triple $L_i$ spans a purple clique; each $\{x_j,\bar{x}_j\}$ is a black edge.
+
+\begin{center}
+\resizebox{0.62\linewidth}{!}{%
+\begin{tikzpicture}[
+  uvlbl/.style={font=\small, inner sep=1pt},
+  uvedge/.style={line width=1.5pt, line cap=round},
+  vtx/.style={circle, draw=black, fill=gray!12, minimum size=9mm, font=\small}
+]
+\node[vtx] (V1) at (-2.4, 0) {$v_1$};
+\node[vtx] (V2) at (0, 3.1) {$v_2$};
+\node[vtx] (V3) at (2.4, 0) {$v_3$};
+
+% $x_2$: $L_2$ contains $x_2$, $L_1$ contains $\bar{x}_2$
+\draw[uvedge] (V1) -- node[uvlbl, fill=white, inner sep=0.5mm, pos=0.55] {$x_2$} (V2);
+
+% $x_1$, $x_3$: both between $v_1$ and $v_3$
+\draw[uvedge] (V1) to[bend left=22]
+  node[uvlbl, fill=white, midway, inner sep=0.5mm] {$x_1$} (V3);
+\draw[uvedge] (V1) to[bend right=22]
+  node[uvlbl, fill=white, midway, inner sep=0.5mm] {$x_3$} (V3);
+
+% $x_4$, $x_5$: both between $v_2$ and $v_3$
+\draw[uvedge] (V2) to[bend left=24]
+  node[uvlbl, fill=white, midway, inner sep=0.5mm] {$x_4$} (V3);
+\draw[uvedge] (V2) to[bend right=24]
+  node[uvlbl, fill=white, midway, inner sep=0.5mm] {$x_5$} (V3);
+
+\end{tikzpicture}%
+}
+\end{center}
+\noindent Here $v_i$ corresponds to collapsing the purple clique on the labels in $L_i$, and collapsing the red edge identifies the red vertex $x_1$ with $\bar{x}_5\in L_3$, so the black edge $\{x_1,\bar{x}_1\}$ becomes a strand between $v_3$ and $v_1$ labeled $x_1$; the other black edges are read off from which $L_a$ contains $x_j$ and which contains $\bar{x}_j$.
+
+\paragraph{Step 1.}
+Start with a particular ltt structure $G$. Add a node to preAUT that is labeled by $G$.
+
+For the first component of the automaton, we start with the seed ltt structure.
+\begin{itemize}
+  \item $\mathrm{GRAPHS}=\{G\}$;
+  \item $\mathrm{graphs}_1=\{G\}$;
+  \item $\mathrm{boxes}=\{\mathrm{graphs}_1\}$;
+  \item layer 1 consists only of $G$, i.e. $\mathrm{GRAPHS}_1=\{G\}$.
+\end{itemize}
+
+
+\medskip
+\noindent\textbf{Remark.}
+$\mathrm{GRAPHS}$ will ultimately be the list of all nodes in the automaton.
+\begin{itemize}
+  \item each $\mathrm{graphs}_k$ will be a ``box'' of ep-isomorphic nodes;
+  \item $\mathrm{boxes}$ will be the collection of these ep-isomorphism classes;
+  \item before closing loops, where nodes represent the same ep-isomorphism class of
+        ltt structures, the automaton looks like:
+{\begin{itemize}
+  \item each $\mathrm{GRAPHS}_2$ (layer 2) node is the terminal node of a directed edge from the $\mathrm{GRAPHS}_1$ (layer 1) node
+  \item each $\mathrm{GRAPHS}_3$ (layer 3) node is the terminal node of a directed edge from at least one $\mathrm{GRAPHS}_2$ (layer 2) node
+  \item in general, each $\mathrm{GRAPHS}_{k+1}$ (layer $k+1$) node is the terminal node of a directed edge from at least one $\mathrm{GRAPHS}_k$ (layer $k$) node\\
+\end{itemize}}
+\end{itemize}
+
+\subsection{Recursive Step}
+
+Recursively (with respect to $k$), complete in $\mathrm{PLTT}$ order Steps 2--3
+for each $G\in \mathrm{GRAPHS}_k$.
+
+\subsubsection{Step 2 (determining outgoing edges \& terminal graphs)}
+
+We find the 4 outgoing edges (terminal ltt structures out of $G$) as follows:
+\begin{itemize}
+  \item Input the starting ltt structure $G$ (an admissible ltt structure):
+        with the vertices labeled by $\mathcal{L}$ and following Convention \ref{c:ltt_structures}, but writing $d_r$ for the label of the red vertex (instead of $v_r$) and $d_p$ be for the label of the purple endpoint of the red edge (instead of $v_p$).
+  \item There are exactly two vertices connected to the $d_p$-vertex by purple edges:
+        \begin{enumerate}[label=\arabic*)]
+          \item let $d_1$ be the label of the first;
+          \item let $d_2$ be the label of the second;
+        \end{enumerate}
+        with order inherited from $\mathcal{L}$.
+  \item For each of $d_1,d_2$, there are two potential directed edges out of $G$
+        (hence one potential terminal ltt structure for each such edge). The triples 
+        $$(\text{initial ltt structure}, \text{edge}, \text{terminal ltt structure})$$ 
+        will be written as $(G, E_{jA}, G_{jA})$ for each $j\in\{1,2\}$ and $A\in\{a,b\}$, where the triples are determined as follows:
+\end{itemize}
+
+For $j\in\{1,2\}$:
+\begin{itemize}
+  \item[] $(G, E_{ja}, G_{ja})$:\\ 
+  The outgoing edge $E_{ja}$ is labeled by $d_r \to d_j d_r$.\\
+  The terminal ltt structure $G_{ja}$ has:
+        \begin{itemize}
+          \item red vertex $d_r$ and red edge $e_r=(d_r,\bar{d}_j)$;
+          \item precisely these purple edges:
+                \begin{itemize}
+                  \item a purple edge $\{d,d'\}$ whenever $G$ has a purple edge
+                        $\{d,d'\}$.
+                \end{itemize}
+        \end{itemize}
+  \item[] $(G, E_{jb}, G_{jb})$:\\
+  The outgoing edge $E_{jb}$ is labeled by $d_j \to d_r d_j$.\\
+  The terminal ltt structure $G_{jb}$ has:
+        \begin{itemize}
+          \item red vertex $d_j$ and red edge $e_r=(d_j,\bar{d}_r)$;
+          \item precisely these purple edges:
+                \begin{itemize}
+                  \item a purple edge $\{d_r,d\}$ whenever $G$ has a colored edge
+                        $\{d_j,d\}$ and
+                  \item a purple edge $\{d,d'\}$ whenever $G$ has a purple edge
+                        $\{d,d'\}$ and neither $d=d_r$ nor $d'=d_r$.
+                \end{itemize}
+        \end{itemize}
+\end{itemize}
+
+Let
+\[
+\mathrm{terminal}(G):=\{G_{1;a},G_{1;b},G_{2;a},G_{2;b}\}
+\]
+(repetitions allowed).
+\begin{itemize}
+  \item Remove any graph from $\mathrm{terminal}(G)$ that is not in $\mathrm{PLTT}$.
+  \item Each graph in $\mathrm{terminal}(G)$ is considered to be of level $k+1$.
+  \item $\mathrm{terminal}(G)$ and level $k+1$ both inherit their order from
+        $\mathrm{PLTT}$.
+\end{itemize}
+
+\begin{task}\label{t:Step2}
+Run Step 2 for the seed ltt structure. Print the outcome.
+\end{task}
+
+Output in the appendix.
+
+\subsubsection{Step 3 (Updating preAUT and the sets)}
+
+In $\mathrm{PLTT}$ order, apply the following to each
+$G'\in\mathrm{terminal}(G)$.
+
+\begin{itemize}
+  \item If $G'$ is ep-isomorphic to some $G''\in\mathrm{GRAPHS}$, but
+        $G'\neq G''$:
+        \begin{itemize}
+          \item $\{G'\}$ is added to $\mathrm{GRAPHS}$, and
+          \item $\{G'\}$ is added to $\mathrm{graphs}_j$ where
+                $G''\in\mathrm{graphs}_j$, and
+          \item add to preAUT a ``permutation edge'' $G'\to G''$ labeled by $\varphi$, where
+                $\varphi$ is the permutation of $\mathcal{L}$ from the ep-isomorphism, and
+        add to preAUT a directed edge $G\to G''$ with the edge label being that for $G\to G'$ given as in Step 2.
+        \end{itemize}
+
+  \item If there exists $G''\in\mathrm{GRAPHS}$ with $G'=G''$:
+        add to preAUT a directed edge $G\to G''$ with the edge label being that for $G\to G'$ given as in Step 2.
+
+  \item For the remaining $G'\in\mathrm{terminal}(G)$:
+        \begin{itemize}
+          \item $\{G'\}$ is added to $\mathrm{GRAPHS}$ and as a node to preAUT, and
+          \item $\mathrm{graphs}_{i+1}=\{G'\}$ where $\mathrm{graphs}_i\in\mathrm{boxes}$
+                and $\mathrm{graphs}_{i+1}\notin\mathrm{boxes}$, and
+          \item $\{G'\}$ is added to $\mathrm{GRAPHS}_{k+1}$, and
+          \item add to preAUT a directed edge $G\to G'$ with the edge label being that for $G\to G'$ given as in Step 2.
+        \end{itemize}
+\end{itemize}
+
+
+\begin{task}\label{t:Step3}
+Having completed running Step 2 for the seed ltt structure, run Step 3 on the output. Print the outcome in a manner that is easily readable by a human mathematician.
+\end{task}
+
+Output in the appendix.
+
+
+\subsubsection{Step 4 (level shift \& program termination)}
+
+After Steps 2--3 are completed for each $G\in\mathrm{GRAPHS}_k$, check whether
+$\mathrm{GRAPHS}_{k+1}=\varnothing$.
+
+If $\mathrm{GRAPHS}_{k+1}=\varnothing$, terminate.
+
+If $\mathrm{GRAPHS}_{k+1}\neq\varnothing$, perform a level shift by replacing
+$k$ with $k+1$ (equivalently, take the current level to be
+$\mathrm{GRAPHS}_{k}:=\mathrm{GRAPHS}_{k+1}$), and then return to Steps 2--3
+for each $G\in\mathrm{GRAPHS}_{k}$.
+
+In other words, the recursive loop is: \\
+For a fixed $k$:
+\[
+\ \text{run Steps 2--3 on all }G\in\mathrm{GRAPHS}_k
+\ \longrightarrow\ \text{run Step 4}
+\ \longrightarrow\ \text{if nonempty, set }k\leftarrow k+1\text{ and repeat.}
+\]
+
+\subsubsection{Step 5}
+
+
+Output the preAUT according to this seed graph as nodes and edges (including ltt structure/map info), leaving out any components with no edges.
+
+\subsubsection{Step 6}
+
+If every ep-isomorphism class of admissible ltt structures is represented by a node in some component of preAUT constructed thus far, then take the disjoint union of these components as preAUT and move onto Step 7. Otherwise, run Step 1- Step 6 using a seed graph from an ep-isomorphism class that is not yet represented by any node.
+
+\subsubsection{Step 7}
+
+Output the disjoint union of the maximal strongly connected components of preAUT as AUT, again leaving out any components with no edges.
+
+\appendix
+
+\section{Figures for Task \ref{t:ltt_structure_list} (ep-isomorphism class representatives)}
+
+The Python code \texttt{list\_admissible\_ltt\_classes.py} lists all $270$ connected distinguished admissible ltt structures; they fall into $14$ ep-isomorphism classes. Below, for each class, one representative is drawn in the same graphic style as the seed ltt structure earlier in this document (purple triangles for the three partition elements $L_1,L_2,L_3$, black edges for pairs $\{x_j,\bar{x}_j\}$, red edge $(x_1,x_2)$). The caption line records the distinguished indices returned by that program for graphs in the class.
+
+\smallskip
+\noindent\textit{Regenerating the TikZ blocks.} The file \texttt{ltt\_appendix\_generated.tex} is produced by running \texttt{python generate\_ltt\_appendix\_tex.py} from the repository root.
+
+\input{ltt_appendix_generated.tex}
+
+\section[Output of Step 2 and Step 3 for the seed ltt structure]{Output of Step 2 and Step 3 for the seed ltt structure (Tasks~\ref{t:Step2} and~\ref{t:Step3})}
+
+\noindent\textit{Regenerating this appendix.} Run \texttt{python generate\_step2\_appendix\_tex.py} and \texttt{python generate\_step3\_appendix\_tex.py} from the repository root; they fill \texttt{step2\_seed\_appendix\_generated.tex} and \texttt{step3\_seed\_appendix\_generated.tex} with formatted \LaTeX{} (matching \texttt{run\_step2\_seed.py} and \texttt{run\_step3\_seed.py}).
+
+\input{step2_seed_appendix_generated.tex}
+\input{step3_seed_appendix_generated.tex}
+
+\input{preaut_appendix_generated.tex}
+
+\input{box_internal_maps_appendix_generated.tex}
+
+\section{Working translation table: paper Roman boxes vs. code numbering}
+
+\noindent This table gives a practical lookup between the Roman-numeral boxes in the paper image and the internal numbering used by this project (\texttt{Class \#} in the ltt-class appendix and \(\mathrm{graphs}_k\) in preAUT/AUT generation).
+
+\begin{center}
+\begin{tabular}{c|c|c}
+\textbf{Paper box} & \textbf{Class \#} & \textbf{\(\mathrm{graphs}_k\)} \\
+\hline
+I & 2 & \(\mathrm{graphs}_2\) \\
+II & 1 & \(\mathrm{graphs}_1\) \\
+III & 6 & \(\mathrm{graphs}_6\) \\
+IV & 9 & \(\mathrm{graphs}_9\) \\
+V & 12 & \(\mathrm{graphs}_{12}\) \\
+VI & 5 & \(\mathrm{graphs}_5\) \\
+VII & 3 & \(\mathrm{graphs}_3\) \\
+VIII & 4 & \(\mathrm{graphs}_4\) \\
+IX & 10 & \(\mathrm{graphs}_{10}\) \\
+X & 7 & \(\mathrm{graphs}_7\) \\
+XI & 13 & \(\mathrm{graphs}_{13}\) \\
+XII & 8 & \(\mathrm{graphs}_8\) \\
+XIII & 11 & \(\mathrm{graphs}_{11}\) \\
+XIV & 14 & \(\mathrm{graphs}_{14}\) \\
+\end{tabular}
+\end{center}
+
+\end{document}

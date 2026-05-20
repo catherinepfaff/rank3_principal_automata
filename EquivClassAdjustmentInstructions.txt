@@ -1,0 +1,405 @@
+In Class 5-14:
+Straighten red (nx1)--(nx2)
+
+In Class 4-5:
+make black (nx5)--(nb5) 1/2 as arched
+
+In Class 5:
+swap x_3 and x_4 locations
+Straighten black (nx1)--(nb1)
+swap vertex locations: (nb2) and (nb4)
+
+In Class 6:
+swap vertex locations: (nb1) and (nx3)
+
+--------------
+
+In Class 5:
+Straighten black (nx2)--(nb2)
+Straighten black (nx3)--(nb3)
+make black (nx4)--(nb4) more arched
+
+In Class 6:
+Straighten black (nx5)--(nb5)
+Straighten black (nx3)--(nb3)
+make black (nx1)--(nb1) less arched
+
+In Class 7:
+Straighten black (nx5)--(nb5)
+make black (nx4)--(nb4) less arched
+swap vertex locations: (nb1) and (nx3)
+
+
+In Class 8:
+make black (nx4)--(nb4) less arched
+make black (nx5)--(nb5) less arched
+swap vertex locations: (nb1) and (nx3)
+
+In Class 7:
+swap vertex locations: (nb2) and (nb3)
+Straighten black (nx3)--(nb3)
+
+In Class 8:
+Straighten black (nx3)--(nb3)
+make black (nx1)--(nb1) less arched
+
+In Class 8:
+make black (nx4)--(nb4) less arched
+
+In Class 9:
+make black (nx2)--(nb2) less arched
+swap vertex locations: (nb3) and (nx5)
+
+In Class 7:
+make black (nx1)--(nb1) less arched
+
+
+In Class 9: swap vertex locations: (nb3) and (nx5)
+I remark that this is undoing a mistake I made
+
+In Class 10: 
+make black (nx2)--(nb2) less arched
+make black (nx4)--(nb4) less arched
+
+In Class 9: 
+swap vertex locations: (nb3) and (nb5)
+Straighten black (nx1)--(nb1)
+Straighten black (nx3)--(nb3)
+
+In Class 9: 
+Straighten black (nx5)--(nb5)
+
+In Class 9: 
+make black (nx4)--(nb4) less arched
+
+In Class 10: 
+swap vertex locations: (nb3) and (nb5)
+Straighten black (nx3)--(nb3)
+Straighten black (nx1)--(nb1)
+
+In Class 9: 
+make black (nx2)--(nb2) less arched
+raise slightly the locations of (nx5) and (nb5)
+move the L_3 label into the appropriate triangle
+make black (nx4)--(nb4) slightly less arched
+
+In Class 10: 
+raise slightly the location of (nb3)
+
+In Class 10: 
+raise slightly more the location of (nb3) and then shift it slightly to the right
+
+In Class 10: 
+make black (nx4)--(nb4) 1/2 as arched
+make black (nx2)--(nb2) 1/2 as arched
+
+In Class 11: 
+make black (nx4)--(nb4) 1/4 as arched
+make black (nx2)--(nb2) 1/4 as arched
+make black (nx5)--(nb5) 1/2 as arched
+Straighten black (nx3)--(nb3)
+Straighten black (nx1)--(nb1)
+
+In Class 10: 
+move L_3 label into the appropriate triangle
+make black (nx5)--(nb5) 1/2 as arched
+make black (nx4)--(nb4) 1/2 as arched
+make black (nx2)--(nb2) 3/4 as arched
+
+In Class 10:
+swap vertex locations: (nx5) and (nx4)
+Straighten black (nx5)--(nb5)
+
+In Class 11: 
+shift the location of (nb3) up and to the left
+
+In Class 11: 
+shift the location of (nx3) down and to the left
+
+In Class 12: 
+swap vertex locations: (nb2) and (nb5)
+Straighten black (nx1)--(nb1)
+Straighten black (nx5)--(nb5)
+
+In Class 11: 
+shift the location of (nb3) up a bit more
+move the L_3 label into the appropriate triangle
+shift the location of (nx3) slightly down and slightly to the left
+move the L_2 label into the appropriate triangle
+
+In Class 10:
+shift the location of (nx3) somewhat down and slightly to the left
+move the L_2 label into the appropriate triangle
+make black (nx2)--(nb2) 1/2 as arched
+
+In Class 5: 
+shift the location of (nb3) somewhat up and slightly to the left
+move the L_3 label into the appropriate triangle
+shift the location of (nx3) somewhat down and slightly to the left
+move the L_2 label into the appropriate triangle
+
+In Class 1: 
+move the L_3 label into the appropriate triangle
+shift the location of (nx3) somewhat down and slightly to the left
+move the L_2 label into the appropriate triangle
+
+In Class 2: 
+move the L_3 label into the appropriate triangle
+shift the location of (nx2) somewhat down and slightly to the right
+move the L_2 label into the appropriate triangle
+
+In Class 3: 
+move the L_3 label into the appropriate triangle
+shift the location of (nx2) somewhat down and slightly to the right
+shift the location of (nx4) somewhat down and slightly to the left
+shift the location of (nx1) somewhat down and slightly to the right
+move the L_2 label into the appropriate triangle
+make black (nx5)--(nb5) 1/2 as arched
+
+In Class 5: 
+shift the location of (nb3) somewhat more up
+shift the location of (nx3) somewhat further down and somewhat further to the left
+shift the location of (nx2) somewhat down
+shift the location of (nx1) somewhat down
+make black (nx5)--(nb5) 2/3 as arched
+
+
+In Class 2:
+shift the location of (nb2) somewhat to the left
+shift the location of (nx2) somewhat down
+
+In Class 3: 
+make black (nx5)--(nb5) 1/2 as arched
+
+In Class 12:
+make black (nx3)--(nb3) 1/4 as arched
+Straighten black (nx2)--(nb2)
+shift the location of (nx2) somewhat down
+move the L_2 label into the appropriate triangle
+shift the location of (nx5) slightly up and slightly to the right
+shift the location of (nb5) ssomewhat up and slightly to the left
+move the L_3 label into the appropriate triangle
+
+In Class 13: 
+make black (nx3)--(nb3) 1/2 as arched
+make black (nx4)--(nb4) 1/4 as arched
+Straighten black (nx5)--(nb5)
+Straighten black (nx1)--(nb1)
+move the L_3 label into the appropriate triangle
+shift the location of (nx1) somewhat down 
+shift the location of (nb3) somewhat down and somewhat to the left
+move the L_2 label into the appropriate triangle
+
+In Class 14: 
+make black (nx3)--(nb3) 1/2 as arched
+make black (nx5)--(nb5) 1/2 as arched
+make black (nx4)--(nb4) 1/4 as arched
+Straighten black (nx2)--(nb2)
+Straighten black (nx1)--(nb1)
+move the L_3 label into the appropriate triangle
+shift the location of (nb3) somewhat down and slightly to the left
+shift the location of (nx2) somewhat down
+shift the location of (nx1) somewhat down
+move the L_2 label into the appropriate triangle 
+swap vertex locations: (nx1) and (nx4)
+
+
+In Class 10:
+shift the location of (nx3) somewhat further down and somewhat further to the left
+shift the location of (nb3) somewhat to the right and somewhat up
+shift the location of (nb5) somewhat to the right
+shift the location of (nx2) down
+shift the location of (nx1) down
+
+
+In Class 9:
+shift the location of (nx2) somewhat down
+shift the location of (nx1) somewhat down 
+shift the location of (nx3) somewhat down and somewhat to the left
+shift the location of (nb5) somewhat up
+move the L_2 label into the appropriate triangle 
+
+In Class 8:
+shift the location of (nb4) quite a bit down and directly below (nx4) 
+shift the location of (nb2) slightly down and slightly to the left
+shift the location of (nx2) somewhat up and slightly to the left
+
+In Class 8:
+move the L_2 label into the appropriate triangle
+move the L_3 label into the appropriate triangle
+make black (nx5)--(nb5) 2/3 as arched
+
+ Class 3: 
+make black (nx5)--(nb5) 1/2 as arched
+
+Class 4:  
+swap vertex locations: (nx2) and (nx3)
+swap vertex locations: (nb1) and (nb3)
+move vertex (nx1) to the right of (nx2)
+move the L_3 label into the appropriate triangle
+
+In Class 6:
+move the L_3 label into the appropriate triangle
+shift the location of (nx5) quite a bit down and somewhat to the left
+shift the location of (nb2) somewhat down and slightly to the left
+move the L_2 label into the appropriate triangle 
+shift the location of (nx2) somewhat up and slightly to the left
+
+In Class 7:
+move the L_3 label into the appropriate triangle
+shift the location of (nb5) quite a bit down and somewhat to the left
+shift the location of (nb3) quite a bit down and slightly to the left
+move the L_2 label into the appropriate triangle 
+shift the location of (nx2) somewhat up and to the left
+
+Class 4:  
+swap vertex locations: (nx2) and (nx4)
+move vertex (nx1) to the right of (nx2)
+swap vertex locations: (nb1) and (nb4)
+Straighten black (nx4)--(nb4)
+
+Class 1:
+shift the location of (nb2) somewhat up and to the right
+shift the location of (nx2) down
+shift the location of (nb5) up and to the left
+
+Class 4: 
+shift the location of (nx4) down and to the right
+shift the location of (nb4) to the right
+shift the location of (nb1) down and to the right
+arch black (nx3)--(nb3) slightly to the left
+shift the location of (nb2) up
+
+Class 2:
+shift the location of (nx1) down
+shift the location of (nb2) to the left
+
+Class 3:
+make black (nx5)--(nb5) 1/2 as arched
+
+Class 5:
+shift the location of (nx2) down
+shift the location of (nx1) down
+shift the location of (nb1) to the right
+shift the location of (nb2) to the right
+shift the location of (nb4) up
+make black (nx5)--(nb5) 1/2 as arched
+make black (nx4)--(nb4) slightly less arched
+
+Class 6:
+Let D be the distance between (nb1) and (nb3)
+Shift each of (nx1), (nx2), (nx3), (nb1) distance D/3 to the right 
+
+Class 4:
+Shift  the location of (nx1) left to a location directly below (nx3) and then shift (nx1) down below the level of (nx2) and above the level of (nb5)
+shift the location of (nx4) down and to the right 
+shift the location of (nb4) to the right 
+shift the location of (nb4) up  
+move the L_2 label into the appropriate triangle 
+
+Class 6:
+shift the location of (nx3) until it is directly above (nb1)
+shift the location of (nx2 up)
+shift the location of (nb3) up
+shift the location of (nb2) down
+Straighten black (nx2)--(nb2)
+
+Class 4:
+Shift the location of (nb4) left to a location directly above (nb1) and then shift (nb3) up to a location halfway between the up-down level of (nb4) and the up-down level of (nb1)
+shift the location of (nx4) down and to the right  
+adjust each L_j label to be in the appropriate triangle
+swap vertex locations: (nb2) and (nb5)
+
+
+Class 6:
+shift the location of (nx3) until it is directly below (nb2) shift the location of (nx2) up to a location halfway between the up-down level of (nb4) and the up-down level of (nb1)move the L_1 label into the appropriate triangle 
+shift the location of (nx1) to directly left of (nx2)
+shift the location of (nb2) down to the same up-down level of (nx5)
+shift the location of (nb5) directly above (nb3) 
+shift the location of (nb4) up to a location halfway between the up-down level of (nb3) and the up-down level of (nb5)move the L_3 label into the appropriate triangle 
+
+Class 4:
+Shift the location of (nx4) down and slightly to the right
+
+Class 6:
+shift the location of (nx2) up to a location halfway between the up-down level of (nb1) and the up-down level of (nx3)
+shift the location of (nx3) to be directly below (nb2) 
+move the L_1 label into the appropriate triangle 
+Shift the location of (nx1) to be directly to the left of (nx2)
+make black (nx4)--(nb4) 1/2 as arched
+
+Class 12:
+make black (nx4)--(nb4) 1/2 as arched
+
+Class 13:
+shift the location of (nx1) to be directly below (nx2) and somewhat down
+
+Class 14:
+shift the location of (nx1) to be directly below (nx2) and above the level of (nb5)
+shift the location of (nx2) to be directly below (nx3) and at the same up-down level as (nb3) 
+swap vertex locations: (nb1) and (nx4)
+
+Class 14:
+shift the location of (nx1) down to a location halfway between the up-down level of (nx2) and the up-down level of (nb5)
+swap vertex locations: (nb1) and (nx4)
+
+
+
+
+
+----------------------------------------------
+for reference:
+
+make black (nx3)--(nb3) 1/2 as arched
+make black (nx5)--(nb5) 1/2 as arched
+make black (nx4)--(nb4) 1/4 as arched
+Straighten black (nx2)--(nb2)
+Straighten black (nx1)--(nb1)
+move the L_3 label into the appropriate triangle
+shift the location of (nb3) somewhat down and slightly to the left
+shift the location of (nx2) somewhat down
+shift the location of (nx1) somewhat down
+move the L_2 label into the appropriate triangle 
+swap vertex locations: (nx1) and (nx4)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

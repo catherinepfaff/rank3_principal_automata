@@ -1,0 +1,60 @@
+\subsection*{Seed \emph{ltt} structure $G$}
+\begin{description}[style=nextline, font=\normalfont\bfseries]
+\item[Red vertex] $\displaystyle x_{1}$.
+\item[Red edge] $\displaystyle \{x_{1},\,\bar{x}_{5}\}$.
+\item[Purple edges ($9$)]\mbox{}\\
+$P_{1}: \{x_{2},\,x_{4}\},\; \{x_{2},\,x_{5}\},\; \{x_{4},\,x_{5}\}$\\
+$P_{2}: \{x_{3},\,\bar{x}_{1}\},\; \{x_{3},\,\bar{x}_{2}\},\; \{\bar{x}_{1},\,\bar{x}_{2}\}$\\
+$P_{3}: \{\bar{x}_{3},\,\bar{x}_{4}\},\; \{\bar{x}_{3},\,\bar{x}_{5}\},\; \{\bar{x}_{4},\,\bar{x}_{5}\}$
+\item[Black edges ($5$)] $\displaystyle \{x_{1},\,\bar{x}_{1}\},\; \{x_{2},\,\bar{x}_{2}\},\; \{x_{3},\,\bar{x}_{3}\},\; \{x_{4},\,\bar{x}_{4}\},\; \{x_{5},\,\bar{x}_{5}\}$.
+\end{description}
+
+\subsection*{Step $2$ parameters}
+$d_r = x_{1}$, $d_p = \bar{x}_{5}$ (purple endpoint of the red edge).\par\smallskip
+\noindent\textit{Prompt alignment:} rule~(j;a) specifies red vertex $d_r$, red edge $\{d_r,\bar{d}_j\}$, and purple edges exactly as in $G$; rule~(j;b) adds purple edges from colored neighbors of $d_j$ and inherits only purple edges not incident to $d_j$ (see \texttt{ltt\_structures.terminal\_ga\_step2} and \texttt{ltt\_structures.terminal\_gb\_step2}). Directed-edge labels use $(d_r,d_j)$.
+
+Membership in $\mathrm{PLTT}$ uses ep-isomorphism to one of the $270$ distinguished graphs (same enumeration as \texttt{list\_admissible\_ltt\_classes.py}).\par\smallskip
+
+\subsection*{Terminal graphs $\mathrm{terminal}(G)=\{G_{1a},G_{1b},G_{2a},G_{2b}\}$}
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*]
+\item $G_{1a}$: directed edge label $x_{1} \to \bar{x}_{3}\,x_{1}$, (rule 2a: $d_r \to d_j\, d_r$). \textbf{retained} (in $\mathrm{PLTT}$).
+\begin{description}[style=nextline, font=\normalfont\bfseries]
+\item[Red vertex] $\displaystyle x_{1}$.
+\item[Red edge] $\displaystyle \{x_{1},\,x_{3}\}$.
+\item[Purple edges ($9$)]\mbox{}\\
+$P_{1}: \{x_{2},\,x_{4}\},\; \{x_{2},\,x_{5}\},\; \{x_{4},\,x_{5}\}$\\
+$P_{2}: \{x_{3},\,\bar{x}_{1}\},\; \{x_{3},\,\bar{x}_{2}\},\; \{\bar{x}_{1},\,\bar{x}_{2}\}$\\
+$P_{3}: \{\bar{x}_{3},\,\bar{x}_{4}\},\; \{\bar{x}_{3},\,\bar{x}_{5}\},\; \{\bar{x}_{4},\,\bar{x}_{5}\}$
+\item[Black edges ($5$)] $\displaystyle \{x_{1},\,\bar{x}_{1}\},\; \{x_{2},\,\bar{x}_{2}\},\; \{x_{3},\,\bar{x}_{3}\},\; \{x_{4},\,\bar{x}_{4}\},\; \{x_{5},\,\bar{x}_{5}\}$.
+\end{description}
+\item $G_{1b}$: directed edge label $\bar{x}_{3} \to x_{1}\,\bar{x}_{3}$, (rule 2b: $d_j \to d_r\, d_j$). \textbf{retained} (in $\mathrm{PLTT}$).
+\begin{description}[style=nextline, font=\normalfont\bfseries]
+\item[Red vertex] $\displaystyle \bar{x}_{3}$.
+\item[Red edge] $\displaystyle \{\bar{x}_{1},\,\bar{x}_{3}\}$.
+\item[Purple edges ($9$)]\mbox{}\\
+$P_{1}: \{x_{1},\,\bar{x}_{4}\},\; \{x_{1},\,\bar{x}_{5}\},\; \{\bar{x}_{4},\,\bar{x}_{5}\}$\\
+$P_{2}: \{x_{2},\,x_{4}\},\; \{x_{2},\,x_{5}\},\; \{x_{4},\,x_{5}\}$\\
+$P_{3}: \{x_{3},\,\bar{x}_{1}\},\; \{x_{3},\,\bar{x}_{2}\},\; \{\bar{x}_{1},\,\bar{x}_{2}\}$
+\item[Black edges ($5$)] $\displaystyle \{x_{1},\,\bar{x}_{1}\},\; \{x_{2},\,\bar{x}_{2}\},\; \{x_{3},\,\bar{x}_{3}\},\; \{x_{4},\,\bar{x}_{4}\},\; \{x_{5},\,\bar{x}_{5}\}$.
+\end{description}
+\item $G_{2a}$: directed edge label $x_{1} \to \bar{x}_{4}\,x_{1}$, (rule 2a: $d_r \to d_j\, d_r$). \textbf{retained} (in $\mathrm{PLTT}$).
+\begin{description}[style=nextline, font=\normalfont\bfseries]
+\item[Red vertex] $\displaystyle x_{1}$.
+\item[Red edge] $\displaystyle \{x_{1},\,x_{4}\}$.
+\item[Purple edges ($9$)]\mbox{}\\
+$P_{1}: \{x_{2},\,x_{4}\},\; \{x_{2},\,x_{5}\},\; \{x_{4},\,x_{5}\}$\\
+$P_{2}: \{x_{3},\,\bar{x}_{1}\},\; \{x_{3},\,\bar{x}_{2}\},\; \{\bar{x}_{1},\,\bar{x}_{2}\}$\\
+$P_{3}: \{\bar{x}_{3},\,\bar{x}_{4}\},\; \{\bar{x}_{3},\,\bar{x}_{5}\},\; \{\bar{x}_{4},\,\bar{x}_{5}\}$
+\item[Black edges ($5$)] $\displaystyle \{x_{1},\,\bar{x}_{1}\},\; \{x_{2},\,\bar{x}_{2}\},\; \{x_{3},\,\bar{x}_{3}\},\; \{x_{4},\,\bar{x}_{4}\},\; \{x_{5},\,\bar{x}_{5}\}$.
+\end{description}
+\item $G_{2b}$: directed edge label $\bar{x}_{4} \to x_{1}\,\bar{x}_{4}$, (rule 2b: $d_j \to d_r\, d_j$). \textbf{retained} (in $\mathrm{PLTT}$).
+\begin{description}[style=nextline, font=\normalfont\bfseries]
+\item[Red vertex] $\displaystyle \bar{x}_{4}$.
+\item[Red edge] $\displaystyle \{\bar{x}_{1},\,\bar{x}_{4}\}$.
+\item[Purple edges ($9$)]\mbox{}\\
+$P_{1}: \{x_{1},\,\bar{x}_{3}\},\; \{x_{1},\,\bar{x}_{5}\},\; \{\bar{x}_{3},\,\bar{x}_{5}\}$\\
+$P_{2}: \{x_{2},\,x_{4}\},\; \{x_{2},\,x_{5}\},\; \{x_{4},\,x_{5}\}$\\
+$P_{3}: \{x_{3},\,\bar{x}_{1}\},\; \{x_{3},\,\bar{x}_{2}\},\; \{\bar{x}_{1},\,\bar{x}_{2}\}$
+\item[Black edges ($5$)] $\displaystyle \{x_{1},\,\bar{x}_{1}\},\; \{x_{2},\,\bar{x}_{2}\},\; \{x_{3},\,\bar{x}_{3}\},\; \{x_{4},\,\bar{x}_{4}\},\; \{x_{5},\,\bar{x}_{5}\}$.
+\end{description}
+\end{enumerate}

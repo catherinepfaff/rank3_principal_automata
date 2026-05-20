@@ -1,0 +1,62 @@
+\subsection*{Step $3$ on seed output (Task~\ref{t:Step3})}
+\noindent Starting from Step~1 initialization $\mathrm{GRAPHS}=\{G\}$, $\mathrm{graphs}_{1}=\{G\}$, $\mathrm{boxes}=\{\mathrm{graphs}_{1}\}$, $\mathrm{GRAPHS}_{1}=\{G\}$, apply Step~$3$ in the Step~$2$ order $\{G_{1a},G_{1b},G_{2a},G_{2b}\}$.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*]
+\item $G_{1a}$: new ep-isomorphism class; add $G_{1a}$ to $\mathrm{GRAPHS}$ and preAUT, create $\mathrm{graphs}_{2}=\{G_{1a}\}$, add $G_{1a}$ to $\mathrm{GRAPHS}_{2}$, and add edge $G \to G_{1a}$ with label $x_{1} \to \bar{x}_{3}\,x_{1}$.
+\begin{description}[style=nextline, font=\normalfont\bfseries]
+\item[Red vertex] $\displaystyle x_{1}$.
+\item[Red edge] $\displaystyle \{x_{1},\,x_{3}\}$.
+\item[Purple edges ($9$)]\mbox{}\\
+$P_{1}: \{x_{2},\,x_{4}\},\; \{x_{2},\,x_{5}\},\; \{x_{4},\,x_{5}\}$\\
+$P_{2}: \{x_{3},\,\bar{x}_{1}\},\; \{x_{3},\,\bar{x}_{2}\},\; \{\bar{x}_{1},\,\bar{x}_{2}\}$\\
+$P_{3}: \{\bar{x}_{3},\,\bar{x}_{4}\},\; \{\bar{x}_{3},\,\bar{x}_{5}\},\; \{\bar{x}_{4},\,\bar{x}_{5}\}$
+\item[Black edges ($5$)] $\displaystyle \{x_{1},\,\bar{x}_{1}\},\; \{x_{2},\,\bar{x}_{2}\},\; \{x_{3},\,\bar{x}_{3}\},\; \{x_{4},\,\bar{x}_{4}\},\; \{x_{5},\,\bar{x}_{5}\}$.
+\end{description}
+\item $G_{1b}$: ep-isomorphic to $G_{1a}$ (box $\mathrm{graphs}_{2}$), not equal; add $G_{1b}$ to $\mathrm{GRAPHS}$ and $\mathrm{graphs}_{2}$, and add permutation edge $G_{1b} \xrightarrow{\varphi} G_{1a}$ with $\varphi=x_{1} \mapsto \bar{x}_{3},\; x_{2} \mapsto x_{2},\; x_{3} \mapsto \bar{x}_{1},\; x_{4} \mapsto x_{4},\; x_{5} \mapsto x_{5}$.
+\begin{description}[style=nextline, font=\normalfont\bfseries]
+\item[Red vertex] $\displaystyle \bar{x}_{3}$.
+\item[Red edge] $\displaystyle \{\bar{x}_{1},\,\bar{x}_{3}\}$.
+\item[Purple edges ($9$)]\mbox{}\\
+$P_{1}: \{x_{1},\,\bar{x}_{4}\},\; \{x_{1},\,\bar{x}_{5}\},\; \{\bar{x}_{4},\,\bar{x}_{5}\}$\\
+$P_{2}: \{x_{2},\,x_{4}\},\; \{x_{2},\,x_{5}\},\; \{x_{4},\,x_{5}\}$\\
+$P_{3}: \{x_{3},\,\bar{x}_{1}\},\; \{x_{3},\,\bar{x}_{2}\},\; \{\bar{x}_{1},\,\bar{x}_{2}\}$
+\item[Black edges ($5$)] $\displaystyle \{x_{1},\,\bar{x}_{1}\},\; \{x_{2},\,\bar{x}_{2}\},\; \{x_{3},\,\bar{x}_{3}\},\; \{x_{4},\,\bar{x}_{4}\},\; \{x_{5},\,\bar{x}_{5}\}$.
+\end{description}
+\item $G_{2a}$: ep-isomorphic to $G$ (box $\mathrm{graphs}_{1}$), not equal; add $G_{2a}$ to $\mathrm{GRAPHS}$ and $\mathrm{graphs}_{1}$, and add permutation edge $G_{2a} \xrightarrow{\varphi} G$ with $\varphi=x_{1} \mapsto x_{1},\; x_{2} \mapsto \bar{x}_{3},\; x_{3} \mapsto \bar{x}_{2},\; x_{4} \mapsto \bar{x}_{5},\; x_{5} \mapsto \bar{x}_{4}$.
+\begin{description}[style=nextline, font=\normalfont\bfseries]
+\item[Red vertex] $\displaystyle x_{1}$.
+\item[Red edge] $\displaystyle \{x_{1},\,x_{4}\}$.
+\item[Purple edges ($9$)]\mbox{}\\
+$P_{1}: \{x_{2},\,x_{4}\},\; \{x_{2},\,x_{5}\},\; \{x_{4},\,x_{5}\}$\\
+$P_{2}: \{x_{3},\,\bar{x}_{1}\},\; \{x_{3},\,\bar{x}_{2}\},\; \{\bar{x}_{1},\,\bar{x}_{2}\}$\\
+$P_{3}: \{\bar{x}_{3},\,\bar{x}_{4}\},\; \{\bar{x}_{3},\,\bar{x}_{5}\},\; \{\bar{x}_{4},\,\bar{x}_{5}\}$
+\item[Black edges ($5$)] $\displaystyle \{x_{1},\,\bar{x}_{1}\},\; \{x_{2},\,\bar{x}_{2}\},\; \{x_{3},\,\bar{x}_{3}\},\; \{x_{4},\,\bar{x}_{4}\},\; \{x_{5},\,\bar{x}_{5}\}$.
+\end{description}
+\item $G_{2b}$: ep-isomorphic to $G$ (box $\mathrm{graphs}_{1}$), not equal; add $G_{2b}$ to $\mathrm{GRAPHS}$ and $\mathrm{graphs}_{1}$, and add permutation edge $G_{2b} \xrightarrow{\varphi} G$ with $\varphi=x_{1} \mapsto x_{5},\; x_{2} \mapsto x_{3},\; x_{3} \mapsto \bar{x}_{4},\; x_{4} \mapsto \bar{x}_{1},\; x_{5} \mapsto \bar{x}_{2}$.
+\begin{description}[style=nextline, font=\normalfont\bfseries]
+\item[Red vertex] $\displaystyle \bar{x}_{4}$.
+\item[Red edge] $\displaystyle \{\bar{x}_{1},\,\bar{x}_{4}\}$.
+\item[Purple edges ($9$)]\mbox{}\\
+$P_{1}: \{x_{1},\,\bar{x}_{3}\},\; \{x_{1},\,\bar{x}_{5}\},\; \{\bar{x}_{3},\,\bar{x}_{5}\}$\\
+$P_{2}: \{x_{2},\,x_{4}\},\; \{x_{2},\,x_{5}\},\; \{x_{4},\,x_{5}\}$\\
+$P_{3}: \{x_{3},\,\bar{x}_{1}\},\; \{x_{3},\,\bar{x}_{2}\},\; \{\bar{x}_{1},\,\bar{x}_{2}\}$
+\item[Black edges ($5$)] $\displaystyle \{x_{1},\,\bar{x}_{1}\},\; \{x_{2},\,\bar{x}_{2}\},\; \{x_{3},\,\bar{x}_{3}\},\; \{x_{4},\,\bar{x}_{4}\},\; \{x_{5},\,\bar{x}_{5}\}$.
+\end{description}
+\end{enumerate}
+
+\paragraph{Outcome after Step $3$ for the seed.}
+$\mathrm{GRAPHS}=\{G, G_{1a}, G_{1b}, G_{2a}, G_{2b}\}$.\\
+$|\mathrm{boxes}|=2$, with:
+\begin{itemize}[leftmargin=*]
+\item $\mathrm{graphs}_{1}=\{G, G_{2a}, G_{2b}\}$.
+\item $\mathrm{graphs}_{2}=\{G_{1a}, G_{1b}\}$.
+\end{itemize}
+$\mathrm{GRAPHS}_{2}=\{G_{1a}\}$.
+
+\paragraph{preAUT edges added in this Step~$3$ pass.}
+\begin{itemize}[leftmargin=*]
+\item $G \xrightarrow{x_{1} \to \bar{x}_{3}\,x_{1}} G_{1a}$.
+\item $G_{1b} \xrightarrow{\varphi} G_{1a}$ with $\varphi=x_{1} \mapsto \bar{x}_{3},\; x_{2} \mapsto x_{2},\; x_{3} \mapsto \bar{x}_{1},\; x_{4} \mapsto x_{4},\; x_{5} \mapsto x_{5}$.
+\item $G_{2a} \xrightarrow{\varphi} G$ with $\varphi=x_{1} \mapsto x_{1},\; x_{2} \mapsto \bar{x}_{3},\; x_{3} \mapsto \bar{x}_{2},\; x_{4} \mapsto \bar{x}_{5},\; x_{5} \mapsto \bar{x}_{4}$.
+\item $G_{2b} \xrightarrow{\varphi} G$ with $\varphi=x_{1} \mapsto x_{5},\; x_{2} \mapsto x_{3},\; x_{3} \mapsto \bar{x}_{4},\; x_{4} \mapsto \bar{x}_{1},\; x_{5} \mapsto \bar{x}_{2}$.
+\end{itemize}
